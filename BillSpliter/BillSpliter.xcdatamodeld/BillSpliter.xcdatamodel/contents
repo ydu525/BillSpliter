@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Bill" representedClassName="Bill" syncable="YES">
+        <attribute name="billAmount" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="billDate" attributeType="Date" syncable="YES"/>
+        <attribute name="billName" attributeType="String" syncable="YES"/>
+        <attribute name="billStatus" attributeType="String" syncable="YES"/>
+        <attribute name="billTotalAmount" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="fkBillToFriend" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Friend" inverseName="fkFriendToBill" inverseEntity="Friend" syncable="YES"/>
+    </entity>
+    <entity name="Friend" representedClassName="Friend" syncable="YES">
+        <attribute name="friendEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="friendFirstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="friendLastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="friendName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="fkFriendToBill" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Bill" inverseName="fkBillToFriend" inverseEntity="Bill" syncable="YES"/>
+        <relationship name="fkFriendToUser" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User_Info" inverseName="fkUserToFriend" inverseEntity="User_Info" syncable="YES"/>
+    </entity>
+    <entity name="User_Info" representedClassName="User_Info" syncable="YES">
+        <attribute name="userEmail" attributeType="String" syncable="YES"/>
+        <attribute name="userName" attributeType="String" syncable="YES"/>
+        <attribute name="userPassword" attributeType="String" syncable="YES"/>
+        <relationship name="fkUserToFriend" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Friend" inverseName="fkFriendToUser" inverseEntity="Friend" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Bill" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="Friend" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="User_Info" positionX="160" positionY="192" width="128" height="105"/>
+    </elements>
+</model>
